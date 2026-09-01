@@ -24,7 +24,7 @@ const GLchar* fragmentShaderSource =
 	"out vec4 color;\n"
 	"void main()\n"
 	"{\n"
-	"color = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+	"color = vec4(1.5f, 3.0f, 0.5f, 10.0f);\n" //Cambia de color al triángulo
 	"}\n\0"
 };
 
@@ -79,7 +79,7 @@ int main() {
 	// Define las dimensiones del viewport
 	glViewport(0, 0, screenWidth, screenHeight);
 
-	//CrearShader();
+	CrearShader();
 
 	// Set up vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] =
@@ -119,7 +119,7 @@ int main() {
 
 		// Render
 		// Clear the colorbuffer
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClearColor(5.2f, 0.3f, 0.3f, 10.0f); //Cambia color del background
 		glClear(GL_COLOR_BUFFER_BIT);
 
 
