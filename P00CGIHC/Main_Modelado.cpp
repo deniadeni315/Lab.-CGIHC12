@@ -22,7 +22,18 @@ const GLint WIDTH = 800, HEIGHT = 600;
 float movX=0.0f;
 float movY=0.0f;
 float movZ=-5.0f;
-float rot = 0.0f;
+float rotX = 0.0f;
+float rotY = 0.0f;
+float rotZ = 0.0f;
+
+void DibujarMesa(glm::vec3 posicion, glm::vec3 escala, GLint modelLoc) {
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, posicion);
+	model = glm::scale(model, escala);
+	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+}
+
 int main() {
 	glfwInit();
 	//Verificación de compatibilidad 
@@ -183,7 +194,9 @@ int main() {
 	
 
 		view = glm::translate(view, glm::vec3(movX,movY, movZ));
-		view = glm::rotate(view, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
+		view = glm::rotate(view, glm::radians(rotX), glm::vec3(1.0f, 0.0f, 0.0f));
+		view = glm::rotate(view, glm::radians(rotY), glm::vec3(0.0f, 1.0f, 0.0f));
+		view = glm::rotate(view, glm::radians(rotZ), glm::vec3(0.0f, 0.0f, 1.0f));
 
 		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
 		GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
@@ -194,13 +207,22 @@ int main() {
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 	
-
 		glBindVertexArray(VAO);
-	
-	    model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(3.0f, 0.1f, 3.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glm::vec3 escalaTabla = glm::vec3(3.0f, 0.1f, 3.0f);
+		glm::vec3 escalaPata = glm::vec3(0.2f, 1.0f, 0.2f);
+		glm::vec3 posicionMesa = glm::vec3(0.0f, 0.5f, 0.0f);
+		glm::vec3 posicionesPatas[] = {
+			glm::vec3(1.3f, 0.0f, 0.8f),
+			glm::vec3(-1.3f, 0.0f, 0.8f),
+			glm::vec3(1.3f, 0.0f, -0.8f),
+			glm::vec3(-1.3f, 0.0f, -0.8f)
+		};
+		DibujarMesa(posicionMesa, escalaTabla, modelLoc);
+		DibujarMesa(posicionesPatas[0], escalaPata, modelLoc);
+		DibujarMesa(posicionesPatas[1], escalaPata, modelLoc);
+		DibujarMesa(posicionesPatas[2], escalaPata, modelLoc);
+		DibujarMesa(posicionesPatas[3], escalaPata, modelLoc);
+
 		glBindVertexArray(0);
 
 				
@@ -233,9 +255,17 @@ int main() {
 	 if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 		 movZ += 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-		 rot += 0.4f;
+		 rotY += 0.4f;
 	 if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-		 rot -= 0.4f;
+		 rotY -= 0.4f;
+	 if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+		 rotX += 0.4f;
+	 if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		 rotX -= 0.4f;
+	 if (glfwGetKey(window, GLFW_KEY_F) == GLFW_PRESS)
+		 rotZ += 0.4f;
+	 if (glfwGetKey(window, GLFW_KEY_G) == GLFW_PRESS)
+		 rotZ -= 0.4f;
  }
 
 
