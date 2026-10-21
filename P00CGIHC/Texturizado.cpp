@@ -99,17 +99,11 @@ int main()
 	// Set up vertex data (and buffer(s)) and attribute pointers
 	GLfloat vertices[] =
 	{
-		//// Positions            // Colors              // Texture Coords
-		//-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.5f, //inferior izquierda
-		//0.5f, -0.5f, 0.0f,     1.0f, 1.0f,1.0f,		3.5f,0.5f, //inferior derecha
-		//0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,		3.5f,6.0f, //superior derecha
-		//-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,6.0f, //superior izquierda
-		
 		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f, //inferior izquierda
-		0.5f, -0.5f, 0.0f,     1.0f, 1.0f,1.0f,		1.0f,0.0f, //inferior derecha
-		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,		1.0f,1.0f, //superior derecha
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f, //superior izquierda
+		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.5f, //inferior izquierda
+		0.5f, -0.5f, 0.0f,     1.0f, 1.0f,1.0f,		3.5f,0.5f, //inferior derecha
+		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,		3.5f,6.0f, //superior derecha
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,6.0f, //superior izquierda
 
 		////Ejercicio 1 (azules, abajo a la derecha)
 		//// Positions            // Colors              // Texture Coords
