@@ -30,7 +30,7 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Camera
-Camera  camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 GLfloat lastX = WIDTH / 2.0;
 GLfloat lastY = HEIGHT / 2.0;
 bool keys[1024];
@@ -104,12 +104,12 @@ int main()
 		//0.5f, -0.5f, 0.0f,     1.0f, 1.0f,1.0f,		3.5f,0.5f, //inferior derecha
 		//0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,		3.5f,6.0f, //superior derecha
 		//-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,6.0f, //superior izquierda
-		
-		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f, //inferior izquierda
-		0.5f, -0.5f, 0.0f,     1.0f, 1.0f,1.0f,		1.0f,0.0f, //inferior derecha
-		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,		1.0f,1.0f, //superior derecha
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f, //superior izquierda
+
+		// Positions            // Colors              // Texture Coords (Ejercicio 4: repeticion 3.5 en U y 5.5 en V)
+		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f, 1.0f,		0.00f, 0.00f, //inferior izquierda
+		 0.5f, -0.5f, 0.0f,    1.0f, 1.0f, 1.0f,		3.50f, 0.00f, //inferior derecha
+		 0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 1.0f,		3.50f, 5.50f, //superior derecha
+		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f, 1.0f,		0.00f, 5.50f, //superior izquierda
 
 		////Ejercicio 1 (azules, abajo a la derecha)
 		//// Positions            // Colors              // Texture Coords
@@ -137,9 +137,8 @@ int main()
 
 	GLuint indices[] =
 	{  // Note that we start from 0!
-	0,1,3,
-	1,2,3
-
+		0, 1, 3,
+		1, 2, 3
 	};
 
 	// First, set the container's VAO (and VBO)
